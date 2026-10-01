@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,19 +41,19 @@ public abstract class BaseServiceRoleProfile {
 
     private String city;
 
-    @SuperBuilder.Default
+    @Builder.Default
     @Column(name = "experience_years", nullable = false, columnDefinition = "integer default 0")
     private Integer experienceYears = 0;
 
-    @SuperBuilder.Default
+    @Builder.Default
     @Column(nullable = false, precision = 3, scale = 2, columnDefinition = "decimal(3,2) default 0")
     private BigDecimal rating = BigDecimal.ZERO;
 
-    @SuperBuilder.Default
+    @Builder.Default
     @Column(name = "reviews_count", nullable = false, columnDefinition = "integer default 0")
     private Integer reviewsCount = 0;
 
-    @SuperBuilder.Default
+    @Builder.Default
     @ElementCollection
     @CollectionTable(name = "service_role_profile_services", joinColumns = @JoinColumn(name = "profile_id"))
     @Column(name = "service_name")
